@@ -1,10 +1,10 @@
 class Solution {
 public:
     string toLowerCase(string s) {
-     vector<char> n(s.size());
+
      for(int i=0;i<s.size();i++){
-        n[i] =tolower(s[i]);
+        if(s[i]>='A' && s[i]<='Z') s[i]+=('a'-'A');
      }
-     return string(n.begin(), n.end());      
+     return s;      
     }
 };
