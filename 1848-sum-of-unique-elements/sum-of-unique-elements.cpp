@@ -1,16 +1,24 @@
 class Solution {
 public:
-    int sumOfUnique(std::vector<int>& nums) {
-        unordered_map<int, int> countMap;
+    int sumOfUnique(vector<int>& nums) {
         int sum = 0;
-        for (int num : nums) {
-            countMap[num]++;
-        }
-        for (auto& pair : countMap) {
-            if (pair.second == 1) {
-                sum += pair.first;
+        int n = nums.size();
+
+        for (int i = 0; i < n; i++) {
+            bool isUnique = true;
+
+            for (int j = 0; j < n; j++) {
+                if (i != j && nums[i] == nums[j]) {
+                    isUnique = false;
+                    break;
+                }
+            }
+
+            if (isUnique) {
+                sum += nums[i];
             }
         }
+
         return sum;
     }
 };
